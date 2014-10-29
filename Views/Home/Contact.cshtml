@@ -1,0 +1,18 @@
+﻿@using System.Configuration
+
+<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        captcha();
+    });
+
+    function captcha() {
+        Recaptcha.create("@(ConfigurationManager.AppSettings["recaptchaPublicKey"])", "captcha",
+        {
+             theme: "red", callback: Recaptcha.focus_response_field
+        });
+    }
+</script>
+<div id="target">
+    @Html.Partial("Form")
+</div>
